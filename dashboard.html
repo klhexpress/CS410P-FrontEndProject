@@ -1,34 +1,84 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Dashboard Template for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="dashboard.css" rel="stylesheet">
 </head>
 
 <body>
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">STOCK MARKET</a>
+      <input class="form-control form-control-dark w-100" id="searchform" type="text" placeholder="Search" aria-label="Search">
+      <button type="button" class="btn btn-light" onclick="search()">Search</button>
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign in</a>
+      </li>
+    </ul>
+    
+  </nav>
 
-    <div id="mySidenav" class="sidenav">
-        <div class="sidebar-header">
-            <h3>Stock Market Dashboard</h3>
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                <span data-feather="home"></span>
+                Home <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file"></span>
+                Feature 1
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="shopping-cart"></span>
+                Feature 2
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="layers"></span>
+                About
+              </a>
+            </li>
+          </ul>
         </div>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">Home</a>
-        <a href="#">Feature1</a>
-        <a href="#">Feature2</a>
-        <a href="#">Feature3</a>
+      </nav>
+
+      <!--this section below is for search-->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Dashboard</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button class="btn btn-sm btn-outline-secondary">Share</button>
+              <button class="btn btn-sm btn-outline-secondary">Export</button>
+            </div>
+            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </button>
+          </div>
+        </div>
+
+        <p id="searchinfo"></p>
+
+      </main>
     </div>
-
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-
-    <form class="example" style="margin:auto;max-width:300px">
-        <input type="text" placeholder="Search.." name="search2">
-        <button onclick="search('AAPL')"><i class="fa fa-search"></i></button>
-    </form>
-
-    <button onclick="search('AAPL')"><i class="fa fa-search"></i></button>
-
+  </div>
 
 </body>
 
