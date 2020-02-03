@@ -13,12 +13,12 @@
 
 <body>
   <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">STOCK MARKET</a>
-      <input class="form-control form-control-dark w-100" id="searchform" type="text" placeholder="Search" aria-label="Search">
-      <button type="button" class="btn btn-light" onclick="search()">Search</button>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">STOCK MARKET</a>
+      
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="#">Sign in</a>
+        <button type="button" class="btn btn-success"><i class="fas fa-user-lock"> </i> Guest</button>
+        <!--a class="nav-link" href="#">Sign in</!--a-->
       </li>
     </ul>
     
@@ -32,25 +32,25 @@
             <li class="nav-item">
               <a class="nav-link active" href="#">
                 <span data-feather="home"></span>
-                Home <span class="sr-only">(current)</span>
+                <i class="fas fa-poll"></i> Market <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="file"></span>
-                Feature 1
+                <i class="fab fa-wpforms"></i> Screener
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="shopping-cart"></span>
-                Feature 2
+                <i class="fas fa-rss-square"></i> News
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">
                 <span data-feather="layers"></span>
-                About
+                <i class="fas fa-keyboard"></i> About
               </a>
             </li>
           </ul>
@@ -61,16 +61,22 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Dashboard</h1>
+          <!--h1 class="h2">Dashboard</!--h1-->
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+            <button type="button" class="btn btn-primary" onclick="search()"><i class="fas fa-search-dollar"></i> GO</button>
+          </form>
+      
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
               <button class="btn btn-sm btn-outline-secondary">Share</button>
-              <button class="btn btn-sm btn-outline-secondary">Export</button>
+              <button class="btn btn-sm btn-outline-secondary">Print</button>
+              <button class="btn btn-sm btn-outline-secondary">Clear</button>
             </div>
-            <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <!--button-- class="btn btn-sm btn-outline-secondary dropdown-toggle">
               <span data-feather="calendar"></span>
               This week
-            </button>
+            </!--button-->
           </div>
         </div>
 
@@ -84,4 +90,5 @@
 
 </html>
 
+<script src="https://kit.fontawesome.com/eeb980f62e.js" crossorigin="anonymous"></script>
 <script src="dashboard.js"></script>

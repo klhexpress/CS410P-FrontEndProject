@@ -1,0 +1,28 @@
+{
+  "name": "cs410p-frontendproject",
+  "version": "1.0.0",
+  "description": "cs410/510p final project",
+  "main": "index.html",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "lite-server",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klhexpress/CS410P-FrontEndProject.git"
+  },
+  "author": "Li SHi, Khoi Nguyen, Tim Khal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klhexpress/CS410P-FrontEndProject/issues"
+  },
+  "homepage": "https://github.com/klhexpress/CS410P-FrontEndProject#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.0.0-alpha2"
+  }
+}

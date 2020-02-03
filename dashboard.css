@@ -18,7 +18,7 @@ body {
   bottom: 0;
   left: 0;
   z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
+  padding: 60px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 .sidebar .nav-link {
-  font-size: medium;
+  font-size: 1.3em;
   font-weight: 500;
   color: #333;
 }
@@ -54,7 +54,7 @@ body {
  */
 
 [role="main"] {
-  padding-top: 48px; /* Space for fixed navbar */
+  padding-top: 50px; /* Space for fixed navbar */
 }
 
 /*
@@ -64,29 +64,38 @@ body {
 .navbar-brand {
   padding-top: .3rem;
   padding-bottom: .3rem;
-  font-size: 1.8em;
+  font-size: 1.1em;
   font-weight: bold;
-  background-color: rgba(0, 0, 0, .25);
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
   text-align: center;
 }
 
-.navbar .form-control {
-  padding: .75rem 1rem;
-  border-width: 0;
-  border-radius: 0;
-  width: 250px;
+.form-inline .form-control {
+  padding: .75rem;
+  border: black 1px solid !important;
+  border-radius: 2px;
+  height: 1.1rem;
+  width: 8rem;
+  text-align: left;
+  line-height: 1.1;
 }
 
 .form-control-dark {
-  color: #fff;
-  background-color: rgba(255, 255, 255, .1);
+  color:#343a40;
+  background-color: rgba(150, 148, 148, 0.1);
   border-color: rgba(255, 255, 255, .1);
 }
 
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+  background-color: rgba(104, 102, 102, 0.1);
+}
+
+.btn {
+  margin: 10px 3px 10px;
+  border-radius: 2px;
+  font-size: 0.8rem;
+  line-height: 1;
 }
 
 /*Resize the wrap to see the search bar change!*/
