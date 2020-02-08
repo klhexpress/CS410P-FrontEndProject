@@ -8,7 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="news.css" rel="stylesheet">
 </head>
 
 <body>
@@ -23,6 +23,7 @@
         </ul>
 
     </nav>
+
 
     <div class="container-fluid">
         <div class="row">
@@ -42,7 +43,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="news.html">
+                            <a class="nav-link" href="#">
                                 <span data-feather="shopping-cart"></span>
                                 <i class="fas fa-rss-square"></i> News
                             </a>
@@ -57,29 +58,26 @@
                 </div>
             </nav>
 
-            <!--this section below is for search-->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <!--h1 class="h2">Dashboard</!--h1-->
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control" id="searchform" type="search" placeholder="Search" aria-label="Search">
-                        <button type="button" class="btn btn-primary" onclick="search()"><i class="fas fa-search-dollar"></i> GO</button>
-                    </form>
+            <!--this section below is for showing news in cards-->
+            <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
 
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-                            <button class="btn btn-sm btn-outline-secondary">Share</button>
-                            <button class="btn btn-sm btn-outline-secondary">Print</button>
-                            <button class="btn btn-sm btn-outline-secondary">Clear</button>
+                <div class="card-columns" id="newsCards">
+
+
+                    <!--Example
+                        <a href="https://www.reuters.com/article/us-global-markets-idUSKBN20105A" class="custom-card">
+                        <div class="card shadow">
+                            <img class="card-img-top" src="https://s4.reutersmedia.net/resources/r/?m=02&d=20200207&t=2&i=1486854616&w=1200&r=LYNXMPEG1603S" alt="Card image cap">
+                            <div class="card-body">
+                                <h4 class="card-title">Rally in stocks runs out of steam as coronavirus toll climbs - Reuters1</h4>
+                                <p class="card-text">
+                                    A mid-week rally in Asian share markets halted on Friday and oil prices steadied as the growing death toll and economic damage from a new virus spreading from China curbed further gains.
+                                </p>
+                            </div>
                         </div>
-                        <!--button-- class="btn btn-sm btn-outline-secondary dropdown-toggle">
-              <span data-feather="calendar"></span>
-              This week
-            </!--button-->
-                    </div>
+                    </a>
+                    -->
                 </div>
-
-                <p id="searchinfo"></p>
 
             </main>
         </div>
@@ -91,3 +89,6 @@
 
 <script src="https://kit.fontawesome.com/eeb980f62e.js" crossorigin="anonymous"></script>
 <script src="dashboard.js"></script>
+<script>
+    extractNews();
+</script>
