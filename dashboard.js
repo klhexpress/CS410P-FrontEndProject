@@ -51,6 +51,7 @@ async function extractNews() {
 
                 let hyperlinkCard = document.createElement('a');
                 hyperlinkCard.href = obj[i].url;
+                hyperlinkCard.target = "_blank";
 
                 let card = document.createElement('div');
                 card.className = 'card shadow';

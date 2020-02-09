@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
+
 body {
   font-size: .875rem;
+  background-color:#e8eaeb;
 }
 
 .feather {
@@ -20,6 +23,7 @@ body {
   z-index: 100; /* Behind the navbar */
   padding: 60px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+  background-image: linear-gradient(rgba(240, 233, 233, 0.5), rgb(236, 230, 230)), url(/img/background);
 }
 
 .sidebar-sticky {
@@ -38,15 +42,26 @@ body {
   }
 }
 
+
+
 .sidebar .nav-link {
-  font-size: 1.3em;
+  font-size: 1.6vw;
   font-weight: 500;
+  font-family: 'Russo One', sans-serif;
+  font-weight: 0;
   color: #333;
+  margin: 10% 5%;
+  padding: 0.5rem 2rem;
+  
 }
 
-.sidebar .nav-link:hover,
-.sidebar .nav-link:focus {
+
+.sidebar .nav-link:focus,  .sidebar .nav-link:hover,.sidebar .nav-item .active{
   color: #007bff;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+.fab, .fas {
+  font-size: 1.6vw;
 }
 
 /*
@@ -106,6 +121,32 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@media (min-width: 576px) {
+  .card-columns {
+      column-count: 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+      column-count: 3;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+      column-count: 4;
+  }
+}
+
+[class^="card"] {
+  margin: 10px;
+  border: none;
+  padding: 5px;
+}
+
+
 
 /*.search {
   width: 100%;
