@@ -88,10 +88,11 @@ body {
   padding: .75rem;
   border: black 1px solid !important;
   border-radius: 2px;
-  height: 1.1rem;
-  width: 8rem;
+  height: 3rem;
+  width: 20rem;
   text-align: left;
   line-height: 1.1;
+  margin-left: 2rem;
 }
 
 .form-control-dark {
@@ -136,7 +137,7 @@ body {
   
 }
 
-@media (min-width: 600px) {
+@media (min-width: 576px) {
   .card-columns {
       column-count: 2;
   }

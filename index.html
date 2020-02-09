@@ -4,15 +4,20 @@
 <head>
     <title>Stock Dashboard</title>
 
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/market.css" rel="stylesheet">
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/market.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">STOCK MARKET</a>
+        <a class="navbar-brand col-sm-2 mr-0" href="index.html">STOCK MARKET</a>
 
         <div class="btn-group d-fixed d-md-none ml-auto mr-auto">
             <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,7 +75,7 @@
             </nav>
 
             <!--this section below is for search-->
-            <main role="main" class="col-md-9 ml-md-auto col-lg-10 px-4">
+            <main role="main" class="col-md-9 ml-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <!--h1 class="h2">Dashboard</!--h1-->
                     <form class="form-inline my-2 my-lg-0">
@@ -93,6 +98,48 @@
 
                 <p id="searchinfo"></p>
 
+                <div id="stockchart"></div>
+
+  <script>
+
+    d3.csv("data/FR0000045072.csv", function(e, data) {
+      new stockchart(data, "2y", "#stockchart", [
+        {
+          height: 200,
+          x_axis: true,
+          ratio: 'close',
+          curves: [
+            {id: ["band_lower", "band_upper"], color: "#EAEAEA", width: 1.2},
+            {id: "ewma12", color: "#F4A6A6", width: 1.2, name: "EWMA12"},
+            {id: "ewma26", color: "#A2C0D9", width: 1.2, name: "EWMA26"},
+            {id: "close", color: "#666666", width: 1.2, name: "Close", format:"$.2f", diff: true},
+          ]
+        },
+        {
+          y_axis: "sym",
+          curves: [
+            {id: "macd", color: "#F4A6A6", width: 1.2, name: "MACD"},
+            {id: "signal", color: "#A2C0D9", width: 1.2, name: "Signal"},
+            {id: "div", width: 1.2, name: "Div", type: "area"},
+          ]
+        },
+        {
+          curves: [
+            {id: "rsi", color: "#E0B8DA", width: 1.2, name: "RSI"},
+          ]
+        },
+        {
+          curves: [
+            {id: "dip", color: "#A2C0D9", width: 1.2, name: "DI+"},
+            {id: "dim", color: "#F4A6A6", width: 1.2, name: "DI-"},
+            {id: "adx", color: "#777777", width: 1.4, name: "ADX"},
+          ]
+        }
+      ])
+    });
+
+  </script>
+
             </main>
         </div>
     </div>
@@ -102,4 +149,4 @@
 </html>
 
 <script src="https://kit.fontawesome.com/eeb980f62e.js" crossorigin="anonymous"></script>
-<script src="dashboard.js"></script>
+<script src="js/dashboard.js"></script>

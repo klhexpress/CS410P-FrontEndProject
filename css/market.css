@@ -1,0 +1,105 @@
+#stockchart {
+  position: relative;
+  font-size: 0.9em;
+  cursor: default;
+  margin: 0 auto;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+
+/* Main definitions */
+
+#stockchart svg {
+  display: block;
+  position: absolute;
+  top: 0;
+}
+
+path {
+  fill: none;
+  stroke: black;
+  stroke-opacity: 0.4;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #777;
+}
+
+.axis .tick line {
+  stroke-opacity: .4;
+}
+
+.axis .tick:not(.tick-one) line {
+  stroke-opacity: .05;
+}
+
+/* Selector */
+
+.select {
+  font-weight: normal;
+  fill: #BBBBBB;
+  cursor: pointer;
+}
+
+.relative .relative, .absolute .absolute {
+  font-weight: bold;
+  fill: #111111;
+}
+
+.diff, .tri, .area {
+  fill-opacity: 0.6;
+}
+
+.tri {
+  font-family: Arial;
+}
+
+
+/* Legends */
+
+.legend{
+  font-weight: bold;
+  font-size: 0.9em;
+  fill: #BBBBBB;
+}
+
+.date {
+  font-style: italic;
+  font-size: 1em;
+  fill: #CCCCCC;
+}
+
+
+/* Date selector */
+
+.range {
+  fill: #888888;
+}
+
+.range tspan[class] {
+  cursor: pointer;
+}
+
+.range .active {
+  fill: #000000;
+  font-weight: bold;
+}
+
+
+/* Focus and overlay */
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus line {
+  stroke: black;
+  stroke-opacity: 0.2;
+}
+
