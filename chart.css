@@ -1,0 +1,50 @@
+/* CSS File corresponding to the stock chart HTML code, in index.html starting on line 104 */
+
+.container-chart{
+    display:block;
+}
+
+    .grid{
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width:50%;
+        height: 600px;
+        padding: 1em;
+        margin:10px;
+    }
+
+
+    .chart-box{
+        font-family: sans-serif;
+        color: #f4f4f4;
+        height:min-content;
+        background-color:#38537c;
+        border: 1px solid #5b77a8;
+    }
+
+
+    .chart-box > h4, h2 {
+        text-align:left;
+        margin:10px;
+    }
+
+    .chart-box > h4{
+        color:lightgrey;
+    }
+
+
+    .chart-box > .high_low{
+        text-align: right;
+        margin-right: 10px;
+    }
+
+    .chart-box > .timezones{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .chart-box:hover{
+        background-color:#00688B;
+    }
+

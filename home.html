@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Stock Dashboard</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index.html">STOCK MARKET</a>
+
+        <div class="btn-group d-fixed d-md-none ml-auto mr-auto">
+            <button type="button" class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Menu
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="index.html"><i style="font-size: 20px;" class="fas fa-poll"></i>
+                    Market</a>
+                <a class="dropdown-item" href="#"><i style="font-size: 20px;" class="fab fa-wpforms"></i> Screen</a>
+                <a class="dropdown-item" href="news.html"><i style="font-size: 20px;" class="fas fa-rss-square"></i>
+                    News</a>
+                <a class="dropdown-item" href="#"><i style="font-size: 20px;" class="fas fa-keyboard"></i> About</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#"><i style="font-size: 20px;" class="fas fa-user-ninja"></i> Log in</a>
+            </div>
+        </div>
+        <ul class="navbar-nav px-3 d-none d-md-block">
+            <li class="nav-item text-nowrap">
+                <button type="button" class="btn btn-outline-light"><i class="fas fa-user-lock" style="font-size: 1vw;">
+                    </i> Guest</button>
+                <!--a class="nav-link" href="#">Sign in</!--a-->
+            </li>
+        </ul>
+
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">
+                                <span data-feather="home"></span>
+                                <i class="fas fa-poll"></i> Market
+                                <!--span class="sr-only">(current)</!--span-->
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="file"></span>
+                                <i class="fab fa-wpforms"></i> Screen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="news.html">
+                                <span data-feather="shopping-cart"></span>
+                                <i class="fas fa-rss-square"></i> News
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span data-feather="layers"></span>
+                                <i class="fas fa-keyboard"></i> About
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--this section below is for search-->
+            <main role="main" class="col-md-9 ml-md-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <!--h1 class="h2">Dashboard</!--h1-->
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control" id="searchform" type="search" placeholder="Search"
+                            aria-label="Search">
+                        <button type="button" class="btn btn-primary" onclick="search()"><i
+                                class="fas fa-search-dollar"></i> GO</button>
+                    </form>
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+                            <button class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button class="btn btn-sm btn-outline-secondary">Print</button>
+                            <button class="btn btn-sm btn-outline-secondary">Clear</button>
+                        </div>
+                        <!--button-- class="btn btn-sm btn-outline-secondary dropdown-toggle">
+              <span data-feather="calendar"></span>
+              This week
+            </!--button-->
+                    </div>
+                </div>
+
+                <p id="searchinfo"></p>
+
+                <!-- Chart-->
+
+                <link rel="stylesheet" type="text/css" href="chart.css">
+                <div class="container-chart">
+                    <div class="grid">
+
+                        <div class="chart-box">
+                            <h4>Dow 30</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+                        <div class="chart-box">
+                            <h4>Nasdaq</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+                        <div class="chart-box">
+                            <h4>S&P 500</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chart-box">
+                            <h4>VIX</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chart-box">
+                            <h4>GOOG</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+                        <div class="chart-box">
+                            <h4>FB</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chart-box">
+                            <h4>BAC</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chart-box">
+                            <h4>AMZN</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chart-box">
+                            <h4>AAPL</h4>
+                            <h2>1000.0</h2>
+                            <div class="high_low">
+                                <p>H: 1000</p>
+                                <p>L: 1000</p>
+                            </div>
+                            <div class="timezones">
+                                <h6>PST:</h6>
+                                <h6>CST:</h6>
+                                <h6>EST:</h6>
+
+                            </div>
+
+                        </div>
+                    </div> <!-- grid container -->
+
+                    <!-- chart end -->
+
+
+
+                    <!-- graph start -->
+                    <!---->
+
+
+                    <div class="card spur-card"
+                        style="width:45%; position:absolute; top:0; right:0; margin-top:168px; margin-right:40px; height:38.5%;">
+                        <div class="card-header">
+                            <div class="spur-card-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="spur-card-title"> Notifications </div>
+                        </div>
+                        <div class="card-body ">
+                            <div class="notifications">
+                                <a href="#!" class="notification">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-inbox"></i>
+                                    </div>
+                                    <div class="notification-text">New comment</div>
+                                    <span class="notification-time">21 days ago</span>
+                                </a>
+                                <a href="#!" class="notification">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-inbox"></i>
+                                    </div>
+                                    <div class="notification-text">New comment</div>
+                                    <span class="notification-time">21 days ago</span>
+                                </a>
+                                <a href="#!" class="notification">
+                                    <div class="notification-icon">
+                                        <i class="fas fa-inbox"></i>
+                                    </div>
+                                    <div class="notification-text">New comment</div>
+                                    <span class="notification-time">21 days ago</span>
+                                </a>
+                                <div class="notifications-show-all">
+                                    <a href="#!">Show all</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="stockFortune">
+
+                        <head>
+                            <script>
+                                window.onload = function () {
+
+                                    var chartFortune = new CanvasJS.Chart("chartContainer", {
+                                        animationEnabled: true,
+
+                                        title: {
+                                            text: "Fortune 500 Companies by Country"
+                                        },
+                                        axisX: {
+                                            interval: 1
+                                        },
+                                        axisY2: {
+                                            interlacedColor: "rgba(1,77,101,.2)",
+                                            gridColor: "rgba(1,77,101,.1)",
+                                            title: "Number of Companies"
+                                        },
+                                        data: [{
+                                            type: "bar",
+                                            name: "companies",
+                                            axisYType: "secondary",
+                                            color: "#014D65",
+                                            dataPoints: [
+                                                { y: 3, label: "Sweden" },
+                                                { y: 7, label: "Taiwan" },
+                                                { y: 5, label: "Russia" },
+                                                { y: 9, label: "Spain" },
+                                                { y: 7, label: "Brazil" },
+                                                { y: 7, label: "India" },
+                                                { y: 9, label: "Italy" },
+                                                { y: 8, label: "Australia" },
+                                                { y: 11, label: "Canada" },
+                                                { y: 15, label: "South Korea" },
+                                                { y: 12, label: "Netherlands" },
+                                                { y: 15, label: "Switzerland" },
+                                                { y: 25, label: "Britain" },
+                                                { y: 28, label: "Germany" },
+                                                { y: 29, label: "France" },
+                                                { y: 52, label: "Japan" },
+                                                { y: 103, label: "China" },
+                                                { y: 134, label: "US" }
+                                            ]
+                                        }]
+                                    });
+                                    chartFortune.render();
+
+                                }
+                            </script>
+                        </head>
+                        <div id="chartContainer" style="height: 400px; width: 100%; padding:1em; margin-right:10px;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+                    </div>
+
+
+                    <div class="stockPrice">
+
+                        <head>
+                            <script>
+                                window.onload = function () {
+
+                                    var chartPrice = new CanvasJS.Chart("chartContainer", {
+                                        animationEnabled: true,
+                                        title: {
+                                            text: "Stock Price of ____ - MONTH"
+                                        },
+                                        axisX: {
+                                            valueFormatString: "DD MMM",
+                                            crosshair: {
+                                                enabled: true,
+                                                snapToDataPoint: true
+                                            }
+                                        },
+                                        axisY: {
+                                            title: "Price of Stock (USD)",
+                                            includeZero: false,
+                                            valueFormatString: "$##0.00",
+                                            crosshair: {
+                                                enabled: true,
+                                                snapToDataPoint: true,
+                                                labelFormatter: function (e) {
+                                                    return "$" + CanvasJS.formatNumber(e.value, "##0.00");
+                                                }
+                                            }
+                                        },
+                                        data: [{
+                                            type: "area",
+                                            xValueFormatString: "DD MMM",
+                                            yValueFormatString: "$##0.00",
+                                            dataPoints: [
+                                                { x: new Date(2016, 07, 01), y: 76.727997 },
+                                                { x: new Date(2016, 07, 02), y: 75.459999 },
+                                                { x: new Date(2016, 07, 03), y: 76.011002 },
+                                                { x: new Date(2016, 07, 04), y: 75.751999 },
+                                                { x: new Date(2016, 07, 05), y: 77.500000 },
+                                                { x: new Date(2016, 07, 08), y: 77.436996 },
+                                                { x: new Date(2016, 07, 09), y: 79.650002 },
+                                                { x: new Date(2016, 07, 10), y: 79.750999 },
+                                                { x: new Date(2016, 07, 11), y: 80.169998 },
+                                                { x: new Date(2016, 07, 12), y: 79.570000 },
+                                                { x: new Date(2016, 07, 15), y: 80.699997 },
+                                                { x: new Date(2016, 07, 16), y: 79.686996 },
+                                                { x: new Date(2016, 07, 17), y: 78.996002 },
+                                                { x: new Date(2016, 07, 18), y: 78.899002 },
+                                                { x: new Date(2016, 07, 19), y: 77.127998 },
+                                                { x: new Date(2016, 07, 22), y: 76.759003 },
+                                                { x: new Date(2016, 07, 23), y: 77.480003 },
+                                                { x: new Date(2016, 07, 24), y: 77.623001 },
+                                                { x: new Date(2016, 07, 25), y: 76.408997 },
+                                                { x: new Date(2016, 07, 26), y: 76.041000 },
+                                                { x: new Date(2016, 07, 29), y: 76.778999 },
+                                                { x: new Date(2016, 07, 30), y: 78.654999 },
+                                                { x: new Date(2016, 07, 31), y: 77.667000 }
+                                            ]
+                                        }]
+                                    });
+                                    chartPrice.render();
+
+                                }
+                            </script>
+                        </head>
+                        <div id="chartContainer" style="height: 370px; width: 100%; margin:10px; padding:1em;"></div>
+                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+                    </div> <!-- Stock Price-->
+
+
+
+
+                </div> <!-- container-chart-->
+
+
+            </main>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="https://kit.fontawesome.com/eeb980f62e.js" crossorigin="anonymous"></script>
+<script src="dashboard.js"></script>
+
