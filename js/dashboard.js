@@ -89,6 +89,134 @@ async function extractNews() {
 }
 
 
+function signin() {
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+    /*ui.start('#firebaseui-auth-container', {
+        signInOptions: [
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // Other config options...
+    });*/
+
+
+    var uiConfig = {
+        callbacks: {
+            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                // User successfully signed in.
+                // Return type determines whether we continue the redirect automatically
+                // or whether we leave that to developer to handle.
+                return true;
+            },
+            uiShown: function() {
+                // The widget is rendered.
+                // Hide the loader.
+                document.getElementById('loader').style.display = 'none';
+            }
+        },
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInSuccessUrl: 'index.html',
+        signInOptions: [
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+            firebase.auth.GithubAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            firebase.auth.PhoneAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        //tosUrl: '<your-tos-url>',
+        // Privacy policy url.
+        //privacyPolicyUrl: '<your-privacy-policy-url>'
+    };
+
+    ui.start('#firebaseui-auth-container', uiConfig);
+
+}
+
+function initApp() {
+    // Listening for auth state changes.
+    // [START authstatelistener]
+    firebase.auth().onAuthStateChanged(function(user) {
+
+        if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var isAnonymous = user.isAnonymous;
+            var uid = user.uid;
+            var providerData = user.providerData;
+            document.getElementById("signinBtn").innerText = displayName;
+            //console.log(displayName + "\t" + email);
+        } else {
+
+            // User is signed out.
+            // ...
+        }
+    });
+
+}
+
+function handleSignInBtnClick() {
+    console.log("in here");
+    var signInBtn = document.getElementById('signinBtn');
+    //firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function(user) {
+        //console.log(user);
+        if (user) {
+            // User is signed in.
+            console.log("in if stmt");
+
+            let dropdownMenu = document.createElement("div");
+            dropdownMenu.className = "dropdown-menu dropdown-menu-right";
+
+            let firstDropdownItem = document.createElement('button');
+            firstDropdownItem.className = "dropdown-item";
+            firstDropdownItem.type = "button";
+            firstDropdownItem.innerText = "WatchList";
+
+            let secondDropdownItem = document.createElement('button');
+            secondDropdownItem.className = "dropdown-item";
+            secondDropdownItem.type = "button";
+            secondDropdownItem.onclick = function() {
+                console.log("in logout()");
+                firebase.auth().signOut().then(function() {
+                    location.reload();
+                }).catch(function(error) {
+                    // An error happened.
+                });
+                return false;
+            }
+            secondDropdownItem.innerText = "Log out";
+
+            dropdownMenu.appendChild(firstDropdownItem);
+            dropdownMenu.appendChild(secondDropdownItem);
+            signInBtn.appendChild(dropdownMenu);
+
+        } else {
+            // No user is signed in.
+            let dropdownMenu = document.createElement("div");
+            dropdownMenu.className = "dropdown-menu dropdown-menu-right";
+
+            let firstItem = document.createElement('button');
+            firstItem.id = "firebaseui-auth-container";
+
+            let secondItem = document.createElement('button');
+            secondItem.id = "loader";
+            secondItem.innerText = "Loading...";
+
+            dropdownMenu.appendChild(firstItem);
+            dropdownMenu.appendChild(secondItem);
+            signInBtn.appendChild(dropdownMenu);
+            signin();
+        }
+    });
+}
+
 /*test().catch(err => {
     console.log("error");
 });*/
