@@ -124,6 +124,10 @@
   <script>
     
     d3.csv("./data/AAPL.csv", function(e, data) {
+
+      /* const response = fetch('https://financialmodelingprep.com/api/v3/historical-price-full/AAPL');
+      const json = response.json();
+      const data = json.historical; */
       
       new stockchart(data, "6m", "#stockchart", [
           {
