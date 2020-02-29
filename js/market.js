@@ -3,8 +3,6 @@
 */
 
 "use strict";
-
-
 function stockchart(data, time, div, param) {
 
 

@@ -152,6 +152,17 @@ body {
     font-size: 1.3em !important;
 }
 
+.nav-item .dropdown {
+    text-align: left;
+    
+
+}
+@media (max-width: 425px) {
+.dropdown {
+    position: relative;
+    float: left;
+}
+}
 
 /*Resize the wrap to see the search bar change!*/
 
