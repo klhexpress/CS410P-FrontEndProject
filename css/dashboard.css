@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Martel&display=swap');
 body {
     font-size: .875rem;
     background-color: #e8eaeb;
@@ -284,6 +285,12 @@ body {
 .profile-card {
     padding: 1vw 2vw 10vw 2vw;
 }
+
+.profile-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
 .img-profile {
     width: 240px;
     height: 240px;
