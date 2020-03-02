@@ -76,7 +76,7 @@ body {
  */
 
 [role="main"] {
-    padding-top: 50px;
+    padding:0 2vw 0 18vw !important;
     /* Space for fixed navbar */
 }
 
@@ -263,3 +263,28 @@ body {
   font-size: 20px;
 }
 */
+
+
+/* Card */
+
+.container-fluid {
+    margin-top: 60px;
+    height: 1000px;
+}
+
+@media (max-width: 425px) {
+    .profile-body {
+        padding: 150px 0 20px 0 !important;
+    }
+}
+.profile-body {
+    padding:200px 2vw 0 18vw;
+    text-align: center;
+}
+.profile-card {
+    padding: 1vw 2vw 10vw 2vw;
+}
+.img-profile {
+    width: 240px;
+    height: 240px;
+}
