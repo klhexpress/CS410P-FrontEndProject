@@ -1,40 +1,3 @@
-async function search() {
-    var input = document.getElementById("searchform").value;
-    console.log("searching for: " + input);
-    var search_url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${input}&apikey=ISMWAHX9Y5PH9DLP`;
-    var response = await fetch(search_url);
-    var data = await response.json();
-    var company_name = data["bestMatches"][0]["2. name"];
-    console.log(company_name);
-
-    var detail_url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${input}&interval=60min&outputsize=compact&apikey=ISMWAHX9Y5PH9DLP`
-
-    var text = "";
-    text += company_name + "<br>";
-
-    var x = await fetch(detail_url)
-        .then((response) => response.json())
-        .then((responseJSON) => {
-
-            console.log(responseJSON["Time Series (60min)"]);
-
-            var obj = responseJSON["Time Series (60min)"];
-
-            function walk(obj) {
-                for (var key in obj) {
-                    if (obj.hasOwnProperty(key)) {
-                        var val = obj[key];
-                        text += key + "    open: " + val["1. open"] + "    close: " + val["4. close"] + "<br>";
-                    }
-                }
-            }
-            walk(obj);
-
-        });
-
-    document.getElementById("searchinfo").innerHTML = text;
-}
-
 async function extractNews() {
     var url = "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=100&apiKey=69c05c3e9def4e2aaee0d739b28ee3f1";
 
@@ -42,11 +5,9 @@ async function extractNews() {
     var response = await fetch(url)
         .then((response) => response.json())
         .then((responseJSON) => {
-            //console.log(responseJSON);
+
             var total = responseJSON.totalResults;
-            //console.log(total);
             var obj = responseJSON["articles"];
-            console.log(obj);
             for (i = 0; i < total; i++) {
 
                 let hyperlinkCard = document.createElement('a');
@@ -87,7 +48,6 @@ async function extractNews() {
             }
         });
 }
-
 
 function signin() {
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -162,7 +122,6 @@ function initApp() {
 }
 
 function handleSignInBtnClick() {
-    console.log("in here");
     var signInBtn = document.getElementById('signinBtn');
     //firebase.auth().onAuthStateChanged(function(user) {
     firebase.auth().onAuthStateChanged(function(user) {
@@ -216,41 +175,3 @@ function handleSignInBtnClick() {
         }
     });
 }
-
-/*test().catch(err => {
-    console.log("error");
-});*/
-
-/*<!-- 
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
-    </script>
-*/

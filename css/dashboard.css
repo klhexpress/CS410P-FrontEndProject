@@ -47,7 +47,7 @@ body {
 }
 
 .sidebar .nav-link {
-    font-size: 1.8vw;
+    font-size: 1.3vw;
     font-weight: 500;
     font-family: 'Times New Roman', Times, serif;
     font-weight: 800;
@@ -59,7 +59,8 @@ body {
 .sidebar .nav-link:focus,
 .sidebar .nav-link:hover,
 .sidebar .nav-item .active {
-    color: #157be9;
+    color: #3a3939;
+    background-color: white;
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important;
 }
 
@@ -76,8 +77,9 @@ body {
  * Content
  */
 
-[role="main"] {
-    padding:0 2vw 0 18vw !important;
+#main {
+    padding: 0 2vw 0 17vw !important;
+    /*padding-left: 900px;*/
     /* Space for fixed navbar */
 }
 
@@ -90,6 +92,15 @@ body {
     .navbar-brand {
         font-size: 1.2em !important;
     }
+    .sidebar .nav-link {
+        font-size: 1em
+    }
+}
+
+@media (max-width: 768px) {
+    #main {
+        padding: 0 1vw 0 1vw !important;
+    }
 }
 
 @media (max-width: 425px) {
@@ -101,7 +112,7 @@ body {
 .navbar-brand {
     padding-top: .3rem;
     padding-bottom: .3rem;
-    font-size: 1.2vw;
+    font-size: 1.5vw;
     font-weight: bold;
     text-align: center;
 }
@@ -155,15 +166,15 @@ body {
 
 .nav-item .dropdown {
     text-align: left;
-    
+}
 
-}
 @media (max-width: 425px) {
-.dropdown {
-    position: relative;
-    float: left;
+    .dropdown {
+        position: relative;
+        float: left;
+    }
 }
-}
+
 
 /*Resize the wrap to see the search bar change!*/
 
@@ -231,39 +242,39 @@ body {
 }
 
 
-/*.search {
-  width: 100%;
-  position: relative;
-  display: flex;
+/*.search */
+
+#div1 .dygraph-legend {
+    background-color: transparent;
 }
 
-.searchTerm {
-  width: 100%;
-  border: 3px solid #00B4CC;
-  border-right: none;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
+.dygraph-axis-label.dygraph-axis-label-x,
+.dygraph-axis-label.dygraph-axis-label-y {
+    color: grey;
 }
 
-.searchTerm:focus{
-  color: #00B4CC;
+.chart {
+    width: 50%;
+    height: 500px;
+    float: left;
 }
 
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
+#div2 .dygraph-legend {
+    background-color: transparent;
 }
-*/
+
+#timeInterval {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#timeInterval>* {
+    background-color: transparent;
+    border: 1px solid lightgrey;
+    border-radius: 10%;
+    margin-right: 5px;
+}
 
 
 /* Card */
@@ -278,10 +289,12 @@ body {
         padding: 150px 0 20px 0 !important;
     }
 }
+
 .profile-body {
-    padding:200px 2vw 0 18vw;
+    padding: 200px 0 0 0;
     text-align: center;
 }
+
 .profile-card {
     padding: 1vw 2vw 10vw 2vw;
 }
