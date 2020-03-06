@@ -253,10 +253,13 @@ body {
     color: grey;
 }
 
-.chart {
+.chartContainer {
+    display: flex;
+}
+
+.chartContainer>.chart {
     width: 50%;
     height: 500px;
-    float: left;
 }
 
 #div2 .dygraph-legend {
@@ -278,11 +281,6 @@ body {
 
 
 /* Card */
-
-.container-fluid {
-    margin-top: 60px;
-    height: 1000px;
-}
 
 @media (max-width: 425px) {
     .profile-body {

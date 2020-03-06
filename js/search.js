@@ -258,11 +258,8 @@ async function search() {
         const response2 = await fetch(initializeGraph_url);
         const data = await response2.json();
 
-        //var searchContainer = document.getElementById('searchResult');
-        //class="col-md-9 ml-auto col-lg-10 px-4" style="object-fit: contain"
         var searchContainer = document.createElement('main');
         searchContainer.id = "main";
-        //searchContainer.style = "display: inline-block;padding-top: 170px;";
         searchContainer.className = "col px-4 mt-4 ml-3";
         searchContainer.style = "object-fit: contain";
 
@@ -270,7 +267,7 @@ async function search() {
         title.innerText = "Market Summary: " + company_name;
 
         let symbol = document.createElement('h6');
-        symbol.innerText = "NASDAQ: " + input.toUpperCase();
+        symbol.innerText = "NASDAQ: " + company_symbol;
 
         let buttons = document.createElement('div');
         buttons.id = "timeInterval";
@@ -295,6 +292,9 @@ async function search() {
         button5.onclick = function() { updategraphs(253); };
         button5.innerText = "1 year";
 
+        let chartContainer = document.createElement("div");
+        chartContainer.className = "chartContainer";
+
         let chart1 = document.createElement("div");
         chart1.id = "div1";
         chart1.className = "chart";
@@ -303,14 +303,12 @@ async function search() {
         chart2.id = "div2";
         chart2.className = "chart";
 
-        /*let currentData = document.createElement("div");
+        let currentData = document.createElement("div");
         currentData.className = "container-fluid";
-
-        currentData.style = "float:left; padding-top: 50px;";*/
+        currentData.style = "margin-top: 30px;";
 
         let dataRow = document.createElement("div");
         dataRow.className = "row";
-        //dataRow.id = "recentData";
 
         let column1 = document.createElement("div");
         column1.className = "column1 col";
@@ -332,7 +330,7 @@ async function search() {
         dataRow.appendChild(column2);
         dataRow.appendChild(column3);
         dataRow.appendChild(column4);
-        //currentData.appendChild(dataRow);
+        currentData.appendChild(dataRow);
 
         buttons.appendChild(button1);
         buttons.appendChild(button2);
@@ -340,12 +338,14 @@ async function search() {
         buttons.appendChild(button4);
         buttons.appendChild(button5);
 
+        chartContainer.appendChild(chart1);
+        chartContainer.appendChild(chart2);
+
         searchContainer.appendChild(title);
         searchContainer.appendChild(symbol);
         searchContainer.appendChild(buttons);
-        searchContainer.appendChild(chart1);
-        searchContainer.appendChild(chart2);
-        searchContainer.appendChild(dataRow);
+        searchContainer.appendChild(chartContainer);
+        searchContainer.appendChild(currentData);
 
         document.getElementsByTagName("main")[0].replaceWith(searchContainer);
 
