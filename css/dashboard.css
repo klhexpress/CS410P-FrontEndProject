@@ -97,7 +97,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 425px) {
     #main {
         padding: 0 1vw 0 1vw !important;
     }
@@ -305,4 +305,11 @@ body {
 .img-profile {
     width: 240px;
     height: 240px;
+}
+
+/* table */
+
+.table {
+    margin: 30px;
+    width: 90%;
 }
