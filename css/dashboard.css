@@ -26,7 +26,7 @@ body {
     padding: 60px 0 0;
     /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-    background-image: linear-gradient(rgba(240, 233, 233, 0.5), rgb(236, 230, 230)), url(/img/background);
+    background-image: linear-gradient(rgba(240, 233, 233, 0.5), rgb(236, 230, 230)), url(https://firebasestorage.googleapis.com/v0/b/cs410p-frontendproject.appspot.com/o/developer_pic%2Fbackground?alt=media&token=adcdd75e-f7c1-49c0-91fb-3974d68e121b);
 }
 
 .sidebar-sticky {
@@ -43,6 +43,12 @@ body {
     .sidebar-sticky {
         position: -webkit-sticky;
         position: sticky;
+    }
+}
+
+@media (min-width: 768px) {
+    li.nav-item {
+        height: 5vw;
     }
 }
 

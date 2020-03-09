@@ -1,6 +1,7 @@
 const gs = [];
 var oneDayCSV_firstGraph;
 var oneDayCSV_secondGraph;
+var input;
 
 function JsonToCSV(JsonArray) {
     var JsonFields = Object.keys(JsonArray[0]);
@@ -175,9 +176,13 @@ function createSecondGraph(json) {
     );
 }
 
-async function search() {
-    var input = document.getElementById("searchform").value;
-    console.log("searching for: " + input);
+async function search(functionCallInput) {
+    if (functionCallInput == 0) {
+        input = document.getElementById("searchform").value;
+        console.log("searching for: " + input);
+    } else {
+        input = functionCallInput;
+    }
     //input = "aapl";
     if (input != null && input != "") {
         var search_url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${input}&apikey=ISMWAHX9Y5PH9DLP`;
@@ -300,7 +305,7 @@ async function updategraphs(days) {
             'file': oneDayCSV_secondGraph
         });
     } else {
-        var detail_url = `https://financialmodelingprep.com/api/v3/historical-price-full/AAPL?timeseries=${days}`;
+        var detail_url = `https://financialmodelingprep.com/api/v3/historical-price-full/${input}?timeseries=${days}`;
         var response = await fetch(detail_url);
         var data = await response.json();
         //console.log(data.historical);
