@@ -7,7 +7,41 @@
     height: 800px;
     width: 55%;
     padding: 1em;
-    margin: 10px;
+}
+
+.aside {
+    padding-top: 1em;
+    width: 45%;
+    height: 800px;
+}
+
+#subGridTitle {
+    border: 1 px solid blue;
+}
+
+@media (max-width: 1280px) {
+    .aside {
+        display: flex;
+    }
+    .grid {
+        width: 100%;
+    }
+    .aside {
+        width: 100%;
+    }
+}
+
+#homeMainContent {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .aside {
+        padding: 1em;
+    }
+    #homeMainContent {
+        flex-direction: column;
+    }
 }
 
 .chart-box {
