@@ -1,0 +1,122 @@
+/* CSS File corresponding to the stock chart HTML code, in index.html starting on line 104 */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 65%;
+    padding: 1em;
+}
+
+.aside {
+    padding-top: 1em;
+    width: 35%;
+}
+
+#piechart {
+    width: 100%;
+    height: 50%;
+}
+
+#worldMarket {
+    height: 50%;
+}
+
+#subGridTitle {
+    height: 45px;
+    color: white;
+    background-color: black;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-left: 20px;
+}
+
+
+/*
+#worldMarket>.row:nth-last-child(-n+2) {
+    background-color: cyan;
+}
+
+#worldMarket>.row>.col {
+    border: 1px solid white;
+}*/
+
+#worldMarket>.row>.col>.change {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+}
+
+@media (max-width: 1200px) {
+    .aside {
+        padding: 1em;
+    }
+    #homeMainContent>.row {
+        flex-direction: column;
+    }
+    .aside {
+        display: flex;
+        flex-direction: column;
+    }
+    .grid {
+        width: 100%;
+    }
+    .aside {
+        width: 100%;
+    }
+    #piechart {
+        height: 400px;
+    }
+}
+
+.chart-box {
+    position: relative;
+    font-family: sans-serif;
+    color: #f4f4f4;
+    background-color: #084115;
+    border: 1px solid white;
+}
+
+.chart-box>.name {
+    text-align: left;
+    margin: 10px;
+}
+
+.chart-box>.change {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.chart-box>.change>* {
+    margin-left: 25px;
+}
+
+.chart-box>.price {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.chart-box>.high_low {
+    text-align: right;
+    margin-right: 10px;
+}
+
+.chart-box>.bottom_ele {
+    padding-left: 10px;
+    display: flex;
+    /*justify-content: space-around;
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+    padding-left: 10px;*/
+    flex-direction: column;
+}
+
+.chart-box:hover {
+    /*background-color: white;
+    color: black;*/
+    border: transparent;
+}
