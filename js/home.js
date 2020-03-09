@@ -26,7 +26,7 @@ function drawChart() {
     ]);
 
     var options = {
-        //backgroundColor: 'transparent',
+        backgroundColor: 'transparent',
         title: 'Fortune 500 Companies by Country',
         titleTextStyle: {
             fontSize: 22,
