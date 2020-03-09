@@ -4,7 +4,6 @@ var oneDayCSV_secondGraph;
 
 function JsonToCSV(JsonArray) {
     var JsonFields = Object.keys(JsonArray[0]);
-    console.log(JsonFields)
     var csvStr = JsonFields.join(",") + "\n";
 
     JsonArray.forEach(element => {
@@ -66,52 +65,15 @@ function createFirstGraph(json) {
         // copy each property into the clone
         if (json[key].date.includes(mostrecentdate)) {
             let temp = {
-                    date: json[key].date,
-                    low: json[key].low,
-                    high: json[key].high,
-                }
-                //console.log(json[key]);
+                date: json[key].date,
+                low: json[key].low,
+                high: json[key].high,
+            }
             clone.push(temp);
         }
     }
     oneDayCSV_firstGraph = JsonToCSV(clone);
-    console.log(json);
 
-    /*
-        var data1 = [];
-        var data2 = [];
-
-        for (key in json) {
-            // copy each property into the clone
-            if (json[key].date.includes(mostrecentdate)) {
-                let temp = {
-                        date: json[key].date,
-                        low: json[key].low,
-                        high: json[key].high,
-                        //middle: json[key]["1. open"]
-                    }
-                    //console.log(json[key]);
-
-                //date = new Date ()
-                let year = json[key].date.slice(0, 4)
-                let month = json[key].date.slice(5, 7)
-                let day = json[key].date.slice(8, 10)
-                let hour = json[key].date.slice(11, 13)
-                let minute = json[key].date.slice(14, 16)
-                let sec = json[key].date.slice(17, )
-                    //console.log(year + month + day + " hour = " + hour + " min = " + minute + "sec = " + sec)
-                    //Date.parse(json[key].date.slice(0, 19))
-                clone.unshift([new Date(year, month, day, hour, minute, sec), json[key].low, json[key].high]);
-                /*var d = new Date(parseInt(Date.parse(json[key].date.slice(0, 19)), 10));
-                var ds = d.toString('MM/dd/yy HH:mm:ss');
-                console.log(ds);
-                //data1.push([Date.parse(json[key].date.slice(0, 19)), json[key].low]);
-                //data2.push([Date.parse(json[key].date.slice(0, 19)), json[key].high]);
-            }
-        }*/
-
-    //oneDayCSV_firstGraph = clone;
-    //console.log(clone);
     gs.push(
         new Dygraph(
             document.getElementById("div1"),
@@ -136,7 +98,6 @@ function createFirstGraph(json) {
                 },
                 axisLineWidth: 2.5,
                 strokeWidth: 2,
-                //axisLabelWidth: 70
                 highlightSeriesOpts: {
                     strokeWidth: 3,
                     strokeBorderWidth: 1,
@@ -145,35 +106,18 @@ function createFirstGraph(json) {
             }
         )
     );
-
-    /*var seriesOptions = [];
-
-    seriesOptions[0] = {
-        name: "low",
-        data: data1
-    };
-    seriesOptions[1] = {
-        name: "high",
-        data: data2
-    };*/
-    //createChart(seriesOptions);
 }
 
 
 
 function JsonToCSV2(JsonArray) {
     var JsonFields = Object.keys(JsonArray[0]);
-    console.log(JsonFields)
     var csvStr = JsonFields.join(",") + "\n";
 
     JsonArray.forEach(element => {
-
-
         date = element.date,
             open = element.open,
             close = element.close
-            //middle = element.middle
-
         csvStr += date + ',' + open + ',' + close + "\n";
     })
 
@@ -193,16 +137,6 @@ function createSecondGraph(json) {
                 close: json[key].close
             }
             clone.push(temp);
-
-            /*let year = json[key].date.slice(0, 4)
-            let month = json[key].date.slice(5, 7)
-            let day = json[key].date.slice(8, 10)
-            let hour = json[key].date.slice(11, 13)
-            let minute = json[key].date.slice(14, 16)
-            let sec = json[key].date.slice(17, )*/
-            //console.log(year + month + day + " hour = " + hour + " min = " + minute + "sec = " + sec)
-            //Date.parse(json[key].date.slice(0, 19))
-            //clone.unshift([new Date(year, month, day, hour, minute, sec), json[key].open, json[key].close]);
         }
     }
 
@@ -248,15 +182,16 @@ async function search() {
     if (input != null && input != "") {
         var search_url = `https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${input}&apikey=ISMWAHX9Y5PH9DLP`;
         var response = await fetch(search_url);
-        var data2 = await response.json();
-        var company_name = data2["bestMatches"][0]["2. name"];
-        var company_symbol = data2["bestMatches"][0]["1. symbol"];
+        var resultList = await response.json();
+        var company_name = resultList["bestMatches"][0]["2. name"];
+        var company_symbol = resultList["bestMatches"][0]["1. symbol"];
         console.log(company_name + " - " + company_symbol);
 
 
         const initializeGraph_url = `https://financialmodelingprep.com/api/v3/historical-chart/5min/${company_symbol}`;
         const response2 = await fetch(initializeGraph_url);
         const data = await response2.json();
+        console.log(data);
 
         var searchContainer = document.createElement('main');
         searchContainer.id = "main";
@@ -316,7 +251,7 @@ async function search() {
 
         let column2 = document.createElement("div");
         column2.className = "column2 col";
-        column2.innerHTML = "293.5<br> 297.1<br> 76202093";
+        column2.innerHTML = data[0].low + "<br>" + data[0].high + "<br>" + data[0].volume;
 
         let column3 = document.createElement("div");
         column3.className = "column3 col";
@@ -324,7 +259,7 @@ async function search() {
 
         let column4 = document.createElement("div");
         column4.className = "column4 col";
-        column4.innerHTML = "293.5<br> 297.1";
+        column4.innerHTML = data[0].open + "<br>" + data[0].close;
 
         dataRow.appendChild(column1);
         dataRow.appendChild(column2);
@@ -358,8 +293,6 @@ async function search() {
 
 async function updategraphs(days) {
     if (days == 1) {
-        //console.log("INFO =  " + oneDayCSV_secondGraph);
-        //console.log(gs);
         gs[0].updateOptions({
             'file': oneDayCSV_firstGraph
         });
@@ -385,16 +318,7 @@ async function updategraphs(days) {
 
             }
             clone1.push(temp);
-            /*let year = json[key].date.slice(0, 4)
-            let month = json[key].date.slice(5, 7)
-            let day = json[key].date.slice(8, 10)
-
-            //console.log(year + month + day + " hour = " + hour + " min = " + minute + "sec = " + sec)
-            //Date.parse(json[key].date.slice(0, 19))
-            clone1.unshift([new Date(year, month, day), json[key].low, json[key].high]);*/
         }
-        //console.log(clone);
-
 
         var fields = Object.keys(clone1[0])
         var replacer = function(key, value) { return value === null ? '' : value }
@@ -407,11 +331,6 @@ async function updategraphs(days) {
 
         csv.unshift(fields.join(',')) // add header column
         csv = csv.join('\r\n');
-
-        //console.log(csv2);
-        /*gs[0].updateOptions({
-            'file': clone1
-        });*/
 
         gs[0] = new Dygraph(
             document.getElementById("div1"),
@@ -435,13 +354,12 @@ async function updategraphs(days) {
                     }
                 },
                 axisLineWidth: 2.5,
-                strokeWidth: 2
-                    //axisLabelWidth: 70
-                    /*highlightSeriesOpts: {
-                        strokeWidth: 3,
-                        strokeBorderWidth: 1,
-                        highlightCircleSize: 5
-                    }*/
+                strokeWidth: 2,
+                highlightSeriesOpts: {
+                    strokeWidth: 3,
+                    strokeBorderWidth: 1,
+                    highlightCircleSize: 5
+                }
             }
         )
 
@@ -454,16 +372,7 @@ async function updategraphs(days) {
                 close: json[key].close,
             }
             clone2.push(temp);
-            /*let year = json[key].date.slice(0, 4)
-            let month = json[key].date.slice(5, 7)
-            let day = json[key].date.slice(8, 10)
-
-            //console.log(year + month + day + " hour = " + hour + " min = " + minute + "sec = " + sec)
-            //Date.parse(json[key].date.slice(0, 19))
-            clone2.unshift([new Date(year, month, day), json[key].low, json[key].high]);*/
         }
-        //console.log(clone);
-
 
         fields = Object.keys(clone2[0])
         replacer = function(key, value) { return value === null ? '' : value }
@@ -476,12 +385,6 @@ async function updategraphs(days) {
 
         csv2.unshift(fields.join(',')) // add header column
         csv2 = csv2.join('\r\n');
-
-        //console.log(csv2);
-        /*gs[1].updateOptions({
-            'file': clone2
-        });*/
-        //var sync = Dygraph.synchronize(gs);
 
         gs[1] = new Dygraph(
             document.getElementById("div2"),
@@ -504,54 +407,14 @@ async function updategraphs(days) {
                     }
                 },
                 axisLineWidth: 2.5,
-                strokeWidth: 2
-                    /*highlightSeriesOpts: {
-                        strokeWidth: 3,
-                        strokeBorderWidth: 1,
-                        highlightCircleSize: 5
-                    }*/
+                strokeWidth: 2,
+                highlightSeriesOpts: {
+                    strokeWidth: 3,
+                    strokeBorderWidth: 1,
+                    highlightCircleSize: 5
+                }
             }
         )
         var sync = Dygraph.synchronize(gs);
     }
 }
-/*
-google.charts.load('current', { 'packages': ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Year', 'Sales', 'Expenses'],
-        ['2004', 1000, 400],
-        ['2005', 1170, 460],
-        ['2006', 660, 1120],
-        ['2007', 1030, 540]
-    ]);
-
-    var options = {
-        title: 'Company Performance',
-        curveType: 'function',
-        legend: { position: 'bottom' }
-    };
-
-    var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-    chart.draw(data, options);
-}*/
-//var temp = document.getElementById("birdy");
-/*
-var temp = document.getElementsByTagName("template")[0];
-var clon = temp.content.cloneNode(true);
-
-function test() {
-    //var temp = document.getElementById("birdy");
-    document.getElementsByTagName("main").replaceWith(temp);
-}
-
-$(document).ready(function() {
-    $('.bird-btn').click(function(e) {
-        //Act on the event 
-        //$('#birdy').css('display', 'initial');
-        $('#searchResult').replaceWith(clon);
-    });
-});*/

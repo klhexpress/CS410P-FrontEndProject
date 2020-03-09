@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Martel&display=swap');
 body {
     font-size: .875rem;
-    background-color: #e8eaeb;
+    /*background-color: #e8eaeb;*/
 }
 
 .feather {
@@ -98,7 +98,7 @@ body {
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
     #main {
         padding: 0 1vw 0 1vw !important;
     }
@@ -258,6 +258,23 @@ body {
     display: flex;
 }
 
+@media (max-width: 1200px) {
+    .chartContainer {
+        display: flex;
+        flex-direction: column;
+    }
+    #div1 {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    #div2 {
+        width: 100%;
+    }
+    /*.chartContainer.chart {
+        width: 90%;
+    }*/
+}
+
 .chartContainer>.chart {
     width: 50%;
     height: 500px;
@@ -290,7 +307,7 @@ body {
 }
 
 .profile-body {
-    padding: 200px 0 0 0;
+    padding: 8vw 0 0 0;
     text-align: center;
 }
 
