@@ -88,6 +88,7 @@ body {
     padding: 0 2vw 0 17vw !important;
     /*padding-left: 900px;*/
     /* Space for fixed navbar */
+    height: 1000px;
 }
 
 
@@ -104,7 +105,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     #main {
         padding: 0 1vw 0 1vw !important;
     }
