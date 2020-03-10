@@ -98,7 +98,7 @@ function updateWorldMarket(pos, price, changePoint, changePercent) {
     if (changePercent < 0) {
         document.getElementById("worldMarket").getElementsByClassName("price")[pos].style.color = "#ef3f49";
     } else {
-        document.getElementById("worldMarket").getElementsByClassName("price")[pos].style.color = "#084115";
+        document.getElementById("worldMarket").getElementsByClassName("price")[pos].style.color = "rgba(0,128,0,.8)";
     }
 }
 
