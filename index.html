@@ -32,7 +32,7 @@
 
         <div class="form-inline d-none d-md-block">
             <input class="form-control" id="searchform" type="search" placeholder="Search" aria-label="Search">
-            <button type="button" class="btn btn-outline-light" onclick="search()"><i class="fas fa-search-dollar"></i> Search</button>
+            <button type="button" class="btn btn-outline-light" onclick="search(0)"><i class="fas fa-search-dollar"></i> Search</button>
         </div>
 
         <div class="dropdown show d-none d-md-block">
@@ -339,17 +339,17 @@
                                     <h6>Previous Close:</h6>
                                 </div>
                             </div>
+                            <div class="lastUpdate">Last Update:</div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="aside row ">
-                            <div id="piechart" class="piechart row"></div>
-                            <div class="row" id="worldMarket">
-                                <div class="row" style="width: 100%; padding-top: -20px;">
-                                    <div class="col-12" id="subGridTitle">
-                                        <h3>World Markets</h3>
-                                    </div>
-                                    <div class="col-6 col-md-3">
+
+                        <div class="aside">
+                            <div id="piechart"></div>
+                            <div class="container" id="worldMarket">
+                                <div class="row" id="subGridTitle">
+                                    <h3>World Markets</h3>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
                                         <div class="name">
                                             <h5>Japan - NIKKEI 225</h5>
                                         </div>
@@ -365,7 +365,7 @@
                                             <h2>0%</h2>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
+                                    <div class="col">
                                         <div class="name">
                                             <h5>Hong Kong - HANG SENG</h5>
                                         </div>
@@ -381,7 +381,9 @@
                                             <h2>0%</h2>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col">
                                         <div class="name">
                                             <h5>London - FTSE 100</h5>
                                         </div>
@@ -397,7 +399,8 @@
                                             <h2>0%</h2>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
+
+                                    <div class="col">
                                         <div class="name">
                                             <h5>Germany - DAX</h5>
                                         </div>
@@ -414,40 +417,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="row" style="width: 100%;">
-                                    <div class="col-6">
-                                        <div class="name">
-                                            <h5>London - FTSE 100</h5>
-                                        </div>
-                                        <div class="change">
-                                            <div>
-                                                <h6>0.0</h6>
-                                            </div>
-                                            <div>
-                                                <h6>0</h6>
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <h2>0%</h2>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="name">
-                                            <h5>Germany - DAX</h5>
-                                        </div>
-                                        <div class="change">
-                                            <div>
-                                                <h6>0.0</h6>
-                                            </div>
-                                            <div>
-                                                <h6>0</h6>
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <h2>0%</h2>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>

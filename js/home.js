@@ -97,6 +97,8 @@ function updateWorldMarket(pos, price, changePoint, changePercent) {
     change.innerHTML = "<div><h6>" + price + "</h6></div><div><h6>" + changePoint + "</h6></div>";
     if (changePercent < 0) {
         document.getElementById("worldMarket").getElementsByClassName("price")[pos].style.color = "#ef3f49";
+    } else {
+        document.getElementById("worldMarket").getElementsByClassName("price")[pos].style.color = "#084115";
     }
 }
 
@@ -140,8 +142,10 @@ async function loadInfoToHomePage() {
     loadCompanyInfoToHomePage("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=BAC&apikey=ISMWAHX9Y5PH9DLP", 6);
     loadCompanyInfoToHomePage("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AMZN&apikey=ISMWAHX9Y5PH9DLP", 7);
     loadCompanyInfoToHomePage("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=AAPL&apikey=ISMWAHX9Y5PH9DLP", 8);
-    var x = new Date().getTime();
-    console.log(x);
+    var lastUpdate = data[0].timestamp;
+
+    var d = new Date(lastUpdate * 1000 - 3600000 * 4);
+    document.getElementsByClassName("lastUpdate")[0].innerHTML = "Last Update: " + d.toUTCString().replace('GMT', 'EST');
 }
 
 loadInfoToHomePage();
