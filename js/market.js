@@ -1,5 +1,5 @@
 /*
-  D3-stockcharts – MIT license
+  discarded D3-stockcharts
 */
 
 "use strict";
