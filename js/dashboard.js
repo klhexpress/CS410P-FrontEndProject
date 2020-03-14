@@ -1,3 +1,5 @@
+//Khoi Nguyen's Code
+
 async function extractNews() {
     var url = "https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=100&apiKey=69c05c3e9def4e2aaee0d739b28ee3f1";
 
