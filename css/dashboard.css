@@ -107,7 +107,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     #main {
         padding: 0 1vw 0 1vw !important;
     }
